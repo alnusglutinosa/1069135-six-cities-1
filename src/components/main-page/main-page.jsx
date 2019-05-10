@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const MainPage = (props) => {
-  const {places} = props;
+  const {places, onClick} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -186,7 +186,7 @@ const MainPage = (props) => {
                         </div>
                       </div>
                       <h2 className="place-card__name">
-                        <a href="#">
+                        <a href="#" onClick={onClick}>
                           {item}
                         </a>
                       </h2>
@@ -207,7 +207,8 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.string.isRequired)
+  places: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onClick: PropTypes.func
 };
 
 export default MainPage;
