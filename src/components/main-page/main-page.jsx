@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlaceCard from "../place-card/place-card.jsx";
+import PlaceList from "../place-list/place-list.jsx";
 
 const MainPage = (props) => {
   const {places, onClick} = props;
@@ -139,11 +139,7 @@ const MainPage = (props) => {
                 </select> */}
               </form>
               <div className="cities__places-list places__list tabs__content">
-
-                {places.map((item, i) => (
-                  <PlaceCard title={item} onClick={onClick} key={`place-${i}`} />
-                ))}
-
+                <PlaceList places={places} onClick={onClick} />
               </div>
             </section>
             <div className="cities__right-section">
@@ -156,11 +152,20 @@ const MainPage = (props) => {
   );
 };
 
-
 MainPage.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.string.isRequired),
+  places: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        mark: PropTypes.string,
+        imgSrc: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        priceText: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired
+      })
+  ).isRequired,
   onClick: PropTypes.func
 };
-
 
 export default MainPage;
