@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import MainPage from "../main-page/main-page.jsx";
 
 const App = (props) => {
-  return <MainPage places={props.topPlaces} />;
+  return <MainPage places={props.offers} />;
 };
 
 App.propTypes = {
-  topPlaces: PropTypes.arrayOf(PropTypes.string.isRequired)
+  offers: PropTypes.array.isRequired,
 };
 
 export default App;

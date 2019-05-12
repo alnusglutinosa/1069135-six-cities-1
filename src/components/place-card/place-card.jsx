@@ -2,18 +2,31 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const PlaceCard = (props) => {
-  const {title, onClick} = props;
+  const {cardInfo, onClick, onClickImg, _updateData} = props;
 
   return (
-    <article className="cities__place-card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+    <article
+      className="cities__place-card place-card"
+      onMouseOver={() => {
+        _updateData(cardInfo.id);
+      }}
+      onMouseOut={() => {
+        _updateData();
+      }}
+      onClick={onClick}
+    >
+
+      {cardInfo.mark && (
+        <div className="place-card__mark">
+          <span>{cardInfo.mark}</span>
+        </div>
+      )}
+
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="#" onClick={onClickImg}>
           <img
             className="place-card__image"
-            src="img/apartment-01.jpg"
+            src={cardInfo.imgSrc}
             width="260"
             height="200"
             alt="Place image"
@@ -23,7 +36,7 @@ const PlaceCard = (props) => {
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;120</b>
+            <b className="place-card__price-value">&euro;{cardInfo.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
@@ -35,24 +48,35 @@ const PlaceCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `93%`}} />
+            <span style={{width: `${cardInfo.rating}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
           <a href="#" onClick={onClick}>
-            {title}
+            {cardInfo.title}
           </a>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{cardInfo.type}</p>
       </div>
     </article>
   );
 };
 
 PlaceCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  cardInfo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    mark: PropTypes.string,
+    imgSrc: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    priceText: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired
+  }).isRequired,
+  onClick: PropTypes.func,
+  onClickImg: PropTypes.func,
+  _updateData: PropTypes.func
 };
 
 export default PlaceCard;

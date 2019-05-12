@@ -3,12 +3,26 @@ import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PlaceCard from "./place-card";
 
+const mock = {
+  place: {
+    id: 1,
+    title: `Beautiful & luxurious apartment at great location`,
+    type: `Apartment`,
+    mark: `Premium`,
+    imgSrc: `img/apartment-01.jpg`,
+    price: 120,
+    priceText: `night`,
+    rating: 93
+  }
+};
+
 Enzyme.configure({adapter: new Adapter()});
 it(`Place-card click button is correctly`, () => {
+  const {place} = mock;
   const clickHandler = jest.fn();
   const app = shallow(
       <PlaceCard
-        title={`Beautiful & luxurious apartment at great location`}
+        cardInfo={place}
         onClick={clickHandler} />
   );
   const titleLink = app.find(`.place-card__name > a`);
