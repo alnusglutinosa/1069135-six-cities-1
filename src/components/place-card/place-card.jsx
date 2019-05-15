@@ -72,7 +72,8 @@ PlaceCard.propTypes = {
     imgSrc: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     priceText: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired
+    rating: PropTypes.number.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
   }).isRequired,
   onClick: PropTypes.func,
   onClickImg: PropTypes.func,

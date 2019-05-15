@@ -12,7 +12,8 @@ const mock = {
     imgSrc: `img/apartment-01.jpg`,
     price: 120,
     priceText: `night`,
-    rating: 93
+    rating: 93,
+    coordinates: [52.3909553943508, 4.85309666406198]
   }
 };
 
@@ -41,7 +42,8 @@ it(`Place-card-img click button is correctly`, () => {
       imgSrc: `img/apartment-01.jpg`,
       price: 120,
       priceText: `night`,
-      rating: 93
+      rating: 93,
+      coordinates: [52.3909553943508, 4.85309666406198]
     }
   );
 });

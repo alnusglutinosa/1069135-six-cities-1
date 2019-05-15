@@ -7,7 +7,8 @@ export default [
     imgSrc: `img/apartment-01.jpg`,
     price: 120,
     priceText: `night`,
-    rating: 93
+    rating: 93,
+    coordinates: [52.3909553943508, 4.85309666406198]
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ export default [
     imgSrc: `img/room.jpg`,
     price: 80,
     priceText: `night`,
-    rating: 80
+    rating: 80,
+    coordinates: [52.369553943508, 4.85309666406198]
   },
   {
     id: 3,
@@ -27,7 +29,8 @@ export default [
     imgSrc: `img/apartment-02.jpg`,
     price: 132,
     priceText: `night`,
-    rating: 80
+    rating: 80,
+    coordinates: [52.3909553943508, 4.929309666406198]
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ export default [
     imgSrc: `img/apartment-03.jpg`,
     price: 180,
     priceText: `night`,
-    rating: 100
+    rating: 100,
+    coordinates: [52.3809553943508, 4.939309666406198]
   },
 ];
