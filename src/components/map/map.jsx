@@ -5,11 +5,9 @@ import leaflet from "leaflet";
 class Map extends PureComponent {
   constructor(props) {
     super(props);
-
-    this._mapRef = React.createRef();
   }
 
-  componentDidMount() {
+  _initMap() {
     const {places, city, zoom} = this.props;
 
     this.map = leaflet.map(`map`, {
@@ -44,12 +42,20 @@ class Map extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    try {
+      this._initMap();
+    } catch (ex) {
+      // continue regardless of error
+    }
+  }
+
   componentWillUnmount() {
     this.map.remove();
   }
 
   render() {
-    return <section className="cities__map map" id="map" ref={this._mapRef} />;
+    return <section className="cities__map map" id="map" />;
   }
 }
 
